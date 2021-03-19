@@ -23,15 +23,17 @@ jobs:
         run: |
           npm install
       - name: '运行 【京东抽奖机】'
+        # run: |
+        #   node onlyOneExecute.js
         run: |
-          node onlyOneExecute.js
+          node ./src/jd_lotteryMachine.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT || github.event.client_payload.JD_USER_AGENT }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN || github.event.client_payload.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
-          SYNCURL: https://github.com/wintjade/un_break/raw/master/src/jd_lotteryMachine.js
+          # SYNCURL: https://github.com/wintjade/un_break/raw/master/src/jd_lotteryMachine.js
 
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
