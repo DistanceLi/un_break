@@ -3,7 +3,7 @@ name: z_marketLottery
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 23 * * *'
+    - cron: '30 3 * * *'
   watch:
     types: started
   repository_dispatch:

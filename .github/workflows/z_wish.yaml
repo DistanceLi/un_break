@@ -3,7 +3,7 @@ name: z_wish
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 2,7 13-20 3 *'
+    - cron: '20 3,7 13-20 3 *'
   watch:
     types: started
   repository_dispatch:
