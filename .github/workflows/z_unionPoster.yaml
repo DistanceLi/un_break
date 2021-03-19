@@ -3,7 +3,7 @@ name: z_unionPoster
 on:
   workflow_dispatch:
   schedule:
-    - cron: '21 3,12 10-31 3 *'
+    - cron: '3 4,12 10-31 3 *'
   watch:
     types: started
   repository_dispatch:
