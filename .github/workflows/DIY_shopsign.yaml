@@ -1,4 +1,4 @@
-name: cui521_DIY_shopsign
+name: DIY_shopsign
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: cui521_DIY_shopsign
+    types: DIY_shopsign
 
 jobs:
   build:
@@ -31,7 +31,7 @@ jobs:
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT || github.event.client_payload.JD_USER_AGENT }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN || github.event.client_payload.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
-          SYNCURL: https://github.com/wintjade/un_break/raw/master/src/cui521_DIY_shopsign.js
+          SYNCURL: https://github.com/wintjade/un_break/raw/master/src/DIY_shopsign.js
 
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
