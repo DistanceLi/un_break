@@ -14,7 +14,7 @@ cron "0 0 * * *" script-path=https://raw.githubusercontent.com/Misaka09982/AutoS
 */
 
 
-const $ = new Env('店铺签到');
+const $ = new Env('跑路·······');
 
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
@@ -28,7 +28,7 @@ let vender=''
 let num=0
 let shopname=''
 const token=[
-  '7B6DC80A3EA9AAFCB217BADAD8B3E5E2',//3.12天添加7天2  15天20
+  '7B6DC80A3EA9AAFCB217BADAD8B3E5E2',//3.12天添加7天2  15天20 
   'AED8C5384AD3E0983D7883740753D7D6',//3.15日添加10天20
   'F2FA870C86F2BDC5B11B92A7DC671256',//3.17日添加10天8 20天66
   'A35B7B46F7B056EFE884124129793A9E',//3.18日添加7天5  10天10 15天20
@@ -39,6 +39,7 @@ const token=[
   '51F3E0459250D0807F444494D3B15FAE',//3.24日添加天
   '00673762F360F776DA942F68E2B91ACE',//3.24日添加天
   'F90F0DF847EF306E6379A8E3D9ABD90F',//3.25日添加3天4 7天5
+  '44E5725028E336D5102E398099A8B264',//3.27日添加1天1 3天3  5天5
 ]
 //IOS等用户直接用NobyDa的jd cookie
 
