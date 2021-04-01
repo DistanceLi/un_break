@@ -1,4 +1,4 @@
-name: jd_818
+name: jd_carnivalcity
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: jd_818
+    types: jd_carnivalcity
 
 jobs:
   build:
@@ -31,7 +31,7 @@ jobs:
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT || github.event.client_payload.JD_USER_AGENT }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN || github.event.client_payload.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
-          SYNCURL: https://github.com/wintjade/un_break/raw/master/src/jd_818.js
+          SYNCURL: https://github.com/wintjade/un_break/raw/master/src/jd_carnivalcity.js
 
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
