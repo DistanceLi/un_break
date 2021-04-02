@@ -3,7 +3,7 @@ name: jd_club_lottery
 on:
   workflow_dispatch:
   schedule:
-    - cron: '20 17 * * *'
+    - cron: '5 16,15 * * *'
   watch:
     types: started
   repository_dispatch:
