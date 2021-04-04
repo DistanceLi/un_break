@@ -1,13 +1,13 @@
-name: z_xmf
+name: jd_syj
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '2 4 * * *'
+    - cron: '45 10,17 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: z_xmf
+    types: jd_syj
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【京东小魔方】'
+      - name: '运行 【京东十元街】'
         run: |
           node onlyOneExecute.js
         env:
@@ -31,7 +31,7 @@ jobs:
           JD_USER_AGENT: ${{ secrets.JD_USER_AGENT || github.event.client_payload.JD_USER_AGENT }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN || github.event.client_payload.TG_BOT_TOKEN }}
           TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
-          SYNCURL: https://github.com/wintjade/un_break/raw/master/src/z_xmf.js
+          SYNCURL: https://github.com/wintjade/un_break/raw/master/src/jd_syj.js
 
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
