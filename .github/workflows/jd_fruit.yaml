@@ -14,17 +14,25 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 12.x
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: ${{ matrix.node-version }}
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
       - name: npm install
         run: |
           npm install
       - name: '运行 【东东农场】'
         run: |
-          node onlyOneExecute.js
+          node ./src/jd_fruit.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
@@ -34,7 +42,6 @@ jobs:
           FRUITSHARECODES: ${{ secrets.FruitShareCodes || github.event.client_payload.FruitShareCodes }}
           FRUIT_BEAN_CARD: ${{ secrets.FRUIT_BEAN_CARD || github.event.client_payload.FRUIT_BEAN_CARD }}
           FRUIT_NOTIFY_CONTROL: ${{ secrets.FRUIT_NOTIFY_CONTROL || github.event.client_payload.FRUIT_NOTIFY_CONTROL }}
-          SYNCURL: https://github.com/wintjade/un_break/raw/master/src/jd_fruit.js
 
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main

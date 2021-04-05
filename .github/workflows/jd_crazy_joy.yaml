@@ -14,17 +14,25 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js 12.x
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: ${{ matrix.node-version }}
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
       - name: npm install
         run: |
           npm install
       - name: '运行 【京东疯狂JOY】'
         run: |
-          node onlyOneExecute.js
+          node ./src/jd_crazy_joy.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE || github.event.client_payload.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG || github.event.client_payload.JD_DEBUG }}
@@ -33,7 +41,6 @@ jobs:
           TG_USER_ID: ${{ secrets.TG_USER_ID || github.event.client_payload.TG_USER_ID }}
           JDJOY_HELPSELF: ${{ secrets.JDJOY_HELPSELF || github.event.client_payload.JDJOY_HELPSELF }}
           JDJOY_APPLYJDBEAN: ${{ secrets.JDJOY_APPLYJDBEAN || github.event.client_payload.JDJOY_APPLYJDBEAN }}
-          SYNCURL: https://github.com/wintjade/un_break/raw/master/src/jd_crazy_joy.js
 
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
