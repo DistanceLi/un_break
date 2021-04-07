@@ -11,8 +11,8 @@ on:
         description: 'Number of runs.'
         required: true
         default: 0
-  schedule:
-    - cron: '0 0 * * *'
+  # schedule:
+  #   - cron: '0 0 * * *'
   watch:
     types: started
   repository_dispatch:
@@ -29,9 +29,3 @@ jobs:
           repository: ${{ github.repository }}
           retain_days: ${{ github.event.inputs.days }}
           keep_minimum_runs: ${{ github.event.inputs.runs }}
-
-      - name: Delete workflow runs
-        uses: GitRML/delete-workflow-runs@main
-        with:
-          retain_days: 1
-          keep_minimum_runs: 1
